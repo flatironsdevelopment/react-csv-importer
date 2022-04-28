@@ -11,10 +11,10 @@ const onValidateRecord = async (): Promise<ValidationErrors> => {
 };
 
 const App = () => {
-  const [apiToken, setApiToken] = useState("2DXqRB8ueCyqFkQwszyIVw");
-  const [templateSlug, setTemplateSlug] = useState("180");
+  const [apiToken, setApiToken] = useState("");
+  const [templateSlug, setTemplateSlug] = useState("");
   const [options, setOptions] = useState<ImporterOptions>({
-    env: "development",
+    env: "production",
   });
 
   const showCDNBasedImporter = () => {
@@ -55,8 +55,11 @@ const App = () => {
   return (
     <>
       <div style={{ fontSize: "14px", margin: "100px" }}>
+        <div style={{ marginTop: "10px" }}>
+          <h1 style={{ width: "200px" }}>Template Information</h1>
+        </div>
         <div>
-          <div style={{ width: "100px" }}>Api Token:</div>
+          <div style={{ width: "200px" }}>Organization Api Token:</div>
           <input
             style={{ width: "400px" }}
             value={apiToken}
@@ -64,53 +67,11 @@ const App = () => {
           />
         </div>
         <div style={{ marginTop: "10px" }}>
-          <div style={{ width: "100px" }}>Template Id:</div>
+          <div style={{ width: "100px" }}>Template ID:</div>
           <input
             style={{ width: "400px" }}
             value={templateSlug}
             onChange={({ target: { value } }) => setTemplateSlug(value)}
-          />
-        </div>
-        <div style={{ marginTop: "10px", marginBottom: "20px" }}>
-          <div style={{ width: "100px" }}>Environment</div>
-          <input
-            style={{ width: "400px" }}
-            value={options.env || ""}
-            onChange={({ target: { value } }) =>
-              setOptions((p) => ({ ...p, env: value as EnvironmentType }))
-            }
-          />
-        </div>
-        <div style={{ marginTop: "10px", marginBottom: "20px" }}>
-          <div style={{ width: "800px" }}>Batch Validation Size</div>
-          <input
-            style={{ width: "400px" }}
-            value={options.batchValidationSize || ""}
-            onChange={({ target: { value } }) => {
-              const batchValidationSize = parseInt(value);
-              if (batchValidationSize) {
-                setOptions((p) => ({
-                  ...p,
-                  batchValidationSize,
-                }));
-              }
-            }}
-          />
-        </div>
-        <div style={{ marginTop: "10px", marginBottom: "20px" }}>
-          <div style={{ width: "800px" }}>Batch Validation Delay Millis</div>
-          <input
-            style={{ width: "400px" }}
-            value={options.batchValidationDelayMs || ""}
-            onChange={({ target: { value } }) => {
-              const batchValidationDelayMillis = parseInt(value);
-              if (batchValidationDelayMillis) {
-                setOptions((p) => ({
-                  ...p,
-                  batchValidationDelayMs: batchValidationDelayMillis,
-                }));
-              }
-            }}
           />
         </div>
         <div
@@ -122,12 +83,6 @@ const App = () => {
         >
           <button style={{ height: "60px" }} onClick={showImporter}>
             Show Importer
-          </button>
-          <button
-            onClick={showCDNBasedImporter}
-            style={{ marginTop: "80px", height: "60px" }}
-          >
-            Show CDN based Importer
           </button>
         </div>
       </div>
