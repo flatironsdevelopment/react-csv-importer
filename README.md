@@ -1,6 +1,7 @@
-# Getting Started with Create React App
+# Flatirons Fuse React Example
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is a sample React project for [Flatirons Fuse](https://flatironsdevelopment.com/products/fuse/).
+The full documentation for Fuse can be [found here](https://fuse-docs.flatironsdevelopment.com/).
 
 ## Available Scripts
 
